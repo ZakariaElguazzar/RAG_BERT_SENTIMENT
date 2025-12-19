@@ -60,6 +60,7 @@ queries = [
 
 
 for q in queries:
-    pred = rag.predict(q)
+    pred_enriched_text,pred_max_score = rag.predict(q)
     print(f"Text: {q}")
-    print(f"Emotion: {LABEL_MAP[pred]}\n")
+    print(f"Emotion by enriched text: {LABEL_MAP[pred_max_score]}\n")
+    print(f"Sentiment by max score: {LABEL_MAP[pred_max_score]}\n")

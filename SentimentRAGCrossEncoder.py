@@ -22,11 +22,8 @@ class SentimentRAGCrossEncoder:
 
         enriched_text += f"\nTarget Text: {query}\nSentiment:"
 
-        if any(s > 5.0 for s in scores):
         # Trouver l'index du score maximum
-            max_score = max(scores)
-            j = scores.index(max_score)
+        max_score = max(scores)
+        j = scores.index(max_score)
 
-            return metadatas[j]['emotion']
-
-        return self.classifier.predict(enriched_text)
+        return self.classifier.predict(enriched_text),metadatas[j]['emotion']
